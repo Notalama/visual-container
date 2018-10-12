@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <span>Visual-Container</span>
+  <div class="header-menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" flex>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button routerLink="/login" mat-menu-item>
+        <mat-icon>person</mat-icon>
+        <span>Login</span>
+      </button>
+      <button routerLink="/signup" mat-menu-item>
+        <mat-icon>person_add</mat-icon>
+        <span>Signup</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

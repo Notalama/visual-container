@@ -1,0 +1,18 @@
+.center{
+    min-width: 250px;
+    width: 40%;
+    margin: 10px auto;
+  }
+  
+  .main-div{
+    text-align: center;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  mat-card-header{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
