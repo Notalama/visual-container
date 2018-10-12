@@ -1,0 +1,28 @@
+<div class="main-div">
+  <mat-card class="center" flex="50">
+    <mat-card-header>
+      <mat-card-title><h3>Login</h3></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="login-form">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Enter your email" [formControl]="email">
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Password" [formControl]="password" type="password" name="password">
+            <mat-error *ngIf="password.invalid">You must enter a value</mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="login()" color="primary">Facebook</button>
+      <button mat-raised-button (click)="login()" color="accent">Login</button>
+      <button mat-raised-button (click)="login()" color="warn">GitHub</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
