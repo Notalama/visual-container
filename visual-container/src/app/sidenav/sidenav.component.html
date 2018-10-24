@@ -1,0 +1,37 @@
+<button class="toggle" mat-icon-button (click)="sidenav.toggle()">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav class="sidenav" fixedInViewport="true" [attr.role]="navigation" [mode]="over">
+    <mat-toolbar color="primary">Menu</mat-toolbar>>
+    <mat-nav-list>
+      <a mat-list-item routerLink='.' class="nav-list-item" role="navigation">
+        <span>Photo</span>
+        <mat-icon matListIcon>insert_photo</mat-icon>
+      </a>
+      <a mat-list-item routerLink='.' class="nav-list-item" role="navigation">
+        <span>Albums</span>
+        <mat-icon matListIcon>photo_album</mat-icon>
+      </a>
+
+      <a *ngFor="let title of titles; let i = index" [attr.data-index]="i" mat-list-item class="nav-list-item" routerLink = '{{title}}' role="navigation">
+        <span>{{title}}</span>
+      </a>
+      <div class="addNav" *ngIf="input">
+        <mat-form-field>
+          <input #box matInput placeholder="Type a title">
+        </mat-form-field>
+        <button mat-raised-button (click)="add(box.value)">Add</button>
+        <button mat-raised-button (click)="cancel()">cancel</button>
+      </div>
+      <a mat-list-item class="nav-list-item">
+        <button mat-raised-button (click)="openInput()" *ngIf="!input">
+          <mat-icon matListIcon>add</mat-icon>
+        </button>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

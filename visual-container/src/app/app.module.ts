@@ -10,6 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './module/app.routing.module';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,8 @@ import { SignupComponent } from './signup/signup.component';
     LoginComponent,
     HeaderComponent,
     SignupComponent,
+    SidenavComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,13 @@ import { SignupComponent } from './signup/signup.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
