@@ -11,7 +11,6 @@ import { AppRoutingModule } from './module/app.routing.module';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
@@ -22,7 +21,6 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     HeaderComponent,
     SignupComponent,
     SidenavComponent,
-    NavbarComponent,
   ],
   imports: [
     BrowserModule,
