@@ -1,7 +1,7 @@
 import { environment } from './../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { FacebookService } from 'ngx-facebook';
+import { FacebookService, LoginResponse } from 'ngx-facebook';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +10,7 @@ import { FacebookService } from 'ngx-facebook';
 export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
-
+  userStatus: LoginResponse;
   constructor(private fb: FacebookService) { }
 
   ngOnInit() {
@@ -22,7 +22,10 @@ export class LoginComponent implements OnInit {
     };
     this.fb.init(initParams);
     this.fb.getLoginStatus().then(res => {
-      console.log(res);
+      if (res.status === 'connected') {
+        console.log(res);
+        // this.setCookie(res);
+      }
     }).catch(e => {
       throw e;
     });
@@ -36,11 +39,24 @@ export class LoginComponent implements OnInit {
   login() {
     this.fb.login().then(res => {
       console.log(res);
+        this.userStatus = res;
       if (res.status === 'connected') {
-        this.fb.getLoginStatus().then(status => {
-          console.log(res);
-        });
+        this.setCookie(res);
       }
     });
+  }
+  setCookie(userData: LoginResponse) {
+    const date = new Date;
+    date.setDate(date.getDate() + 1);
+    document.cookie = 'userID=' + userData.authResponse.userID + '; path=/; expires=' + date.toUTCString();
+  }
+
+  test() {
+    this.fb.api('/me' + '?fields=gender,email,name', 'get')
+      .then(this.userData)
+      .catch(e => console.log(e));
+  }
+  userData(userResponse) {
+    console.log(userResponse);
   }
 }

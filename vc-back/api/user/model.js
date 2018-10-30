@@ -32,6 +32,7 @@ const userSchema = new Schema({
   },
   picture: {
     type: String,
+    default: '',
     trim: true
   }
 }, {

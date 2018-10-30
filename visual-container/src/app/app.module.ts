@@ -10,13 +10,14 @@ import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './module/app.routing.module';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    SignupComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +26,7 @@ import { SignupComponent } from './signup/signup.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    HttpClientModule,
     FacebookModule.forRoot(),
     RouterModule.forRoot([])
   ],
