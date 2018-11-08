@@ -13,6 +13,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { MainPageComponent, PlusDialogComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     HeaderComponent,
     SignupComponent,
     SidenavComponent,
+    MainPageComponent,
+    PlusDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     MatListModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PlusDialogComponent]
 })
 export class AppModule { }

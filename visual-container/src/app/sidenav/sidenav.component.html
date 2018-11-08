@@ -5,13 +5,9 @@
   <mat-sidenav #sidenav class="sidenav" fixedInViewport="true" [attr.role]="navigation" [mode]="over">
     <mat-toolbar color="primary">Menu</mat-toolbar>>
     <mat-nav-list>
-      <a mat-list-item routerLink='.' class="nav-list-item" role="navigation">
-        <span>Photo</span>
+      <a mat-list-item routerLink='/main' class="nav-list-item" role="navigation">
+        <span>Main page</span>
         <mat-icon matListIcon>insert_photo</mat-icon>
-      </a>
-      <a mat-list-item routerLink='.' class="nav-list-item" role="navigation">
-        <span>Albums</span>
-        <mat-icon matListIcon>photo_album</mat-icon>
       </a>
 
       <a *ngFor="let title of titles; let i = index" [attr.data-index]="i" mat-list-item class="nav-list-item" routerLink = '{{title}}' role="navigation">
