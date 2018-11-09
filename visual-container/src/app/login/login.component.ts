@@ -1,7 +1,9 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { FacebookService, LoginResponse } from 'ngx-facebook';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +13,10 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
   userStatus: LoginResponse;
-  constructor(private fb: FacebookService) { }
+  constructor(
+    private fb: FacebookService,
+    private http: HttpClient,
+    private router: Router) { }
 
   ngOnInit() {
     const initParams = {
@@ -24,7 +29,13 @@ export class LoginComponent implements OnInit {
     this.fb.getLoginStatus().then(res => {
       if (res.status === 'connected') {
         console.log(res);
-        // this.setCookie(res);
+        this.router.navigateByUrl('home').then(
+          success => console.log('login success', success),
+          reject => {
+            console.log('login rejected', reject);
+            this.router.navigateByUrl('login');
+          }
+        );
       }
     }).catch(e => {
       throw e;
@@ -37,11 +48,26 @@ export class LoginComponent implements OnInit {
         '';
   }
   login() {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    this.http.post(
+      environment.URL + '/auth?access_token=masterKey',
+      { email: this.email.value, password: this.password.value, id: '5bd97a6bd734ca2d14177377' },
+      { headers: headers }).subscribe(e => console.log(e));
+  }
+  fbLogin() {
     this.fb.login().then(res => {
       console.log(res);
-        this.userStatus = res;
+      this.userStatus = res;
       if (res.status === 'connected') {
         this.setCookie(res);
+        this.router.navigateByUrl('home').then(
+          success => console.log('login success', success),
+          reject => {
+            console.log('login rejected', reject);
+            this.router.navigateByUrl('login');
+          }
+        );
       }
     });
   }
@@ -49,14 +75,5 @@ export class LoginComponent implements OnInit {
     const date = new Date;
     date.setDate(date.getDate() + 1);
     document.cookie = 'userID=' + userData.authResponse.userID + '; path=/; expires=' + date.toUTCString();
-  }
-
-  test() {
-    this.fb.api('/me' + '?fields=gender,email,name', 'get')
-      .then(this.userData)
-      .catch(e => console.log(e));
-  }
-  userData(userResponse) {
-    console.log(userResponse);
   }
 }

@@ -23,19 +23,6 @@ export class SignupComponent implements OnInit {
       version: 'v3.2'
     };
     this.fb.init(initParams);
-    this.fb.getLoginStatus().then(async res => {
-      console.log(res);
-      this.userId = res.authResponse.userID;
-      await this.fb.api('/' + this.userId, 'get').then(result => {
-        console.log(result);
-      });
-    });
-
-  }
-  logout() {
-    this.fb.logout().then(res => {
-      console.log(res);
-    });
   }
 
   checkStatus() {
@@ -73,13 +60,5 @@ export class SignupComponent implements OnInit {
         });
       }
     });
-  }
-  getUsers() {
-    this.http.get(environment.URL + '/users/me?access_token=' + environment.devToken)
-      .subscribe(val => console.log(val),
-        e => console.log(e));
-    this.http.get(environment.URL + '/users?access_token=' + environment.adminToken)
-      .subscribe(val => console.log(val),
-        e => console.log(e));
   }
 }

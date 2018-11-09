@@ -1,6 +1,13 @@
 <mat-toolbar color="primary">
   <span>Visual-Container</span>
   <div class="header-menu">
+    <div class="user-header" *ngIf="isLoggedIn">
+      <mat-chip-list>
+        <mat-chip>
+          <mat-icon>home</mat-icon> {{userName}}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
     <button mat-icon-button [matMenuTriggerFor]="menu" flex>
       <mat-icon>more_vert</mat-icon>
     </button>
