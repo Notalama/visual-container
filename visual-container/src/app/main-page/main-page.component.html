@@ -1,0 +1,6 @@
+<mat-grid-list cols="7" rowHeight = "1:1">
+  <mat-grid-tile (mouseenter) = mouseEnter() (mouseleave) ="mouseLeave()">
+    <button mat-icon-button (click)="openDialog()"><mat-icon>add</mat-icon></button> 
+    <mat-grid-tile-footer *ngIf="hover">Add</mat-grid-tile-footer>
+  </mat-grid-tile>
+</mat-grid-list>

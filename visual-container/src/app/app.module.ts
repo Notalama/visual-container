@@ -12,6 +12,10 @@ import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { MainPageComponent, PlusDialogComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     HeaderComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    SidenavComponent,
+    MainPageComponent,
+    PlusDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +37,16 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     HttpClientModule,
     FacebookModule.forRoot(),
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PlusDialogComponent]
 })
 export class AppModule { }

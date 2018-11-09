@@ -1,0 +1,19 @@
+mat-grid-tile {
+    max-width: 250px;
+    max-height: 250px;
+    border: 1px solid lightgrey;
+  }
+
+mat-icon {
+    position: absolute;
+    font-size: 360%;
+    color: rgb(120, 197, 223);
+    right: 53%;
+    bottom: 20%;
+}
+
+mat-grid-list {
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+}
