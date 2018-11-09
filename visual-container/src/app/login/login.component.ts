@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.fb.getLoginStatus().then(res => {
       if (res.status === 'connected') {
         console.log(res);
-        this.router.navigateByUrl('home').then(
+        this.router.navigateByUrl('main').then(
           success => console.log('login success', success),
           reject => {
             console.log('login rejected', reject);
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
       this.userStatus = res;
       if (res.status === 'connected') {
         this.setCookie(res);
-        this.router.navigateByUrl('home').then(
+        this.router.navigateByUrl('main').then(
           success => console.log('login success', success),
           reject => {
             console.log('login rejected', reject);
